@@ -1,0 +1,79 @@
+!pip install -q groq
+
+import os
+from groq import Groq
+from IPython.display import display, Markdown
+
+os.environ["GROQ_API_KEY"] = "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"
+client = Groq()
+
+question = "implement dbscan algorithm "
+
+system_prompt = (
+    "You are a university professor grading and answering AIML and Python exam questions. "
+    "Provide academic, structured, and cleanly formatted solutions using clear headings, bullet points, and syntax-highlighted markdown code blocks. "
+    "Do not include conversational pleasantries, introductory filler, or concluding remarks. Direct answers only."
+)
+
+completion = client.chat.completions.create(
+    model="qwen/qwen3.8-27b",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": question}
+    ],
+    temperature=0.2
+)
+
+display(Markdown(completion.choices[0].message.content))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!pip install -q groq
+
+import os
+from groq import Groq
+from IPython.display import display, Markdown
+
+os.environ["GROQ_API_KEY"] = "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"
+client = Groq()
+
+question = "implement dbscana nd kmeans clustering"
+
+system_prompt = (
+    "You are a strict code generation tool for university AIML exams. "
+    "Output ONLY the direct answer formulas, bulleted structural differences, and raw executable code blocks. "
+    "CRITICAL: Do not include a single line of explanation text. Do not include any code comments (no lines starting with #). "
+    "Do not include any conversational filler, notes, intro, or outro text. Output only the raw answers."
+)
+
+completion = client.chat.completions.create(
+    model="qwen/qwen3.8-27b",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": question}
+    ],
+    temperature=0.0,
+    max_tokens=400 
+)
+
+display(Markdown(completion.choices[0].message.content))
+
